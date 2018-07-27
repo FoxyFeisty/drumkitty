@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="charset" content="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link type="text/css" rel="stylesheet" href="drumkitty_V2.css">
+        <title>Drumkitty project II</title>
+    </head>
+    <body>
+        <h1>Drumkitty loves you II</h1>
+            <div class="drumkit">
+                <div class="keydiv" data-action="clap">
+                    <div class="keychar">1</div>
+                    <div class="instrument">clap</div>
+                    <audio id="clap">
+                        <source src="sounds/clap.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="hihat">
+                    <div class="keychar">2</div>
+                    <div class="instrument">hihat</div>
+                    <audio id="hihat">
+                        <source src="sounds/hihat.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="kick">
+                    <div class="keychar">3</div>
+                    <div class="instrument">kick</div>
+                    <audio id="kick">
+                        <source src="sounds/kick.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="openhat">
+                    <div class="keychar">4</div>
+                    <div class="instrument">openhat</div>
+                    <audio id="openhat">
+                        <source src="sounds/openhat.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="boom">
+                    <div class="keychar">5</div>
+                    <div class="instrument">boom</div>
+                    <audio id="boom">
+                        <source src="sounds/boom.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="ride">
+                    <div class="keychar">6</div>
+                    <div class="instrument">ride</div>
+                    <audio id="ride">
+                        <source src="sounds/ride.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="snare">
+                    <div class="keychar">7</div>
+                    <div class="instrument">snare</div>
+                    <audio id="snare">
+                        <source src="sounds/snare.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="tom">
+                    <div class="keychar">8</div>
+                    <div class="instrument">tom</div>
+                    <audio id="tom">
+                        <source src="sounds/tom.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="keydiv" data-action="tink">
+                    <div class="keychar">9</div>
+                    <div class="instrument">tink</div>
+                    <audio id="tink">
+                        <source src="sounds/tink.wav" type="audio/wav">
+                    </audio>
+                </div>
+            </div>
+            <div class="instruction">
+                <p>Press keys 1 to 9 or click</p>
+            </div>
+            <div class="buttons">
+                <button id="btnRecord">Record</button>
+                <button id="btnStop">Stop</button>
+                <button id="btnDelete">Delete</button>
+            </div>
+            <div id="recordDiv">
+                <ul class="recordings">
+                </ul>
+            </div>
+        <script type="text/javascript" src="drumkitty_V2.js"></script>
+    </body>
+</html>
