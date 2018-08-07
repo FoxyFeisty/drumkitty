@@ -29,16 +29,15 @@
       playlist = [],
       j = 0;
 
-  // Event bei Tastendruck/-klick: Sound spielen
-      // Attribut von aktiviertem ('evt.target') Element abgefragt (data*)
-    function playSoundMaster(soundObject) {
-      console.log(soundObject.currentTime);
-        soundObject.currentTime = 0;
-        soundObject.pause();
-        soundObject.play();
-    }
+  // Master für Sound abspielen
+  function playSoundMaster(soundObject) {
+      soundObject.currentTime = 0;
+      soundObject.pause();
+      soundObject.play();
+  }
+  // Event-Funktion bei 'click'
   function playSound(evt) {
-    // .currentTarget für auslösendes Element; .target für konkret geklicktes Element!
+    var d;
     switch(evt.currentTarget.getAttribute('data-action')) {
       case 'clap':
         playSoundMaster(clapSound);
@@ -68,12 +67,21 @@
         playSoundMaster(tinkSound);
         break;
     }
+    if(rec) {
+        d = new Date();
+        startT = startT === 0 ? d.getTime() : startT;
+        d = d.getTime() - startT;
+        // key-Info über innerHTML
+        var keyNum = evt.currentTarget.children[0].innerHTML;
+        soundfile.push([keyNum, d]);
+    }
   }
-  // Event bei Keypress: Sound spielen
+  // Event-Funktion bei 'keypress'
   function playSoundByKey(evt) {
-      var d;
+    var d;
     switch(evt.key) {
       case "1":
+        // CSS: Taste gedrückt
         keys[0].className = "keydiv onKeyPress";
         playSoundMaster(clapSound);
         break;
@@ -110,12 +118,12 @@
         playSoundMaster(tinkSound);
         break;
     } 
-      if(rec) {
-          d = new Date();
-          startT = startT === 0 ? d.getTime() : startT;
-          d = d.getTime() - startT;
-          soundfile.push([evt.key, d]);
-      } 
+    if(rec) {
+        d = new Date();
+        startT = startT === 0 ? d.getTime() : startT;
+        d = d.getTime() - startT;
+        soundfile.push([evt.key, d]);
+    } 
   }
   // Event bei Keyup: Hover-Style wieder zurücksetzen
   function resetStyle(evt) {
@@ -199,12 +207,10 @@
         // Zeit-Index bei play() durchlaufen
         if (count < playlist[id].length - 1) {
             count += 1;
-            // Zeit dazwischen
-            // console.log(playlist[id][count][1]);
-            timeTotal += playlist[id][count][1];
-            // console.log(timeTotal+);
-            console.log(window.setTimeout(play, playlist[id][count][1]));
-            window.setTimeout(play, playlist[id][count][1]);
+            // Zeitdifferenz zwischen zwei Aufnahmen ermitteln
+            timeTotal = count > 0 ? playlist[id][count][1] - playlist[id][count-1][1] : playlist[id][count][1];
+            // Abspielen nach Zeitdifferenz
+            window.setTimeout(play, timeTotal);
         }            
     }
   }
@@ -244,13 +250,15 @@
         for (var i = 0; i < playlist.length; i++) {
           playlist.pop();
         }
+        // Variablen um eins zurücksetzen
+        cnt -= 1;
+        j -= 1;
         if (liTotal === 1) {
           // Variablen zurücksetzen
           cnt = 0;
           j = 0;
           // Div Container ausblenden
           recordDiv.classList.remove("recordDiv-active");
-          window.console.log(playlist);
         }
     }
   // EventListener für Klick auf Keys
