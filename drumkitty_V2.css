@@ -1,0 +1,164 @@
+/*********************
+CSS INDEX
+
+01  Layout
+    01.1  Allgemein
+    01.2  Klassen
+    01.3  IDs
+
+02  Media Queries
+    02.1  Mittlere Bildschirme
+    02.2  Kleine Bildschirme
+
+***********************/
+
+/* 01 Layout
+/***********************
+/* 01.1 Allgemein */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-image: url("images/cat_big.jpg");
+  background-size: content;
+  background-color: grey;
+  background-repeat: no-repeat;
+  font-family: monospace;
+  text-align: center;
+}
+h1 {
+  color: white;
+  font-size: 500%;
+  text-shadow: 1px 1px black;
+}
+/***********************
+/* 01.2 Klassen */
+.drumkit {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+}
+.keydiv {
+  width: 8em;
+  margin: 1em;
+  margin-bottom: 2em;
+  padding: 1.5em;
+  border-radius: 5px;
+  background: rgba(255,0,0,0.5);
+  border: 4px solid rgba(255,0,0,0);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  transform: scale(1);    /* Zoom-Effekt */
+  transition: .1s;          /* Verzögerung */
+}
+.keydiv:hover, .onKeyPress {
+  box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);    /* Zoom-Effekt */
+}
+.keydiv:active {
+  box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);    /* Zoom-Effekt */
+}
+.keychar {
+  font-size: 2.5em;
+  color: white;
+}
+.instrument {
+  padding-bottom: 0.5em;
+}
+.instruction #recordDiv{
+  text-shadow: 0.5px 0.5px white;
+}
+#recordDiv {
+    width: 200px;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+.recordDiv-active {
+        background: rgba(255, 255, 255, 0.5);
+}
+#recordDiv li {
+    list-style: none;
+    text-align: left;
+    cursor: pointer;
+}
+#recordDiv li:hover {
+    text-decoration: underline;
+}
+/***********************
+/* 01.3 IDs */
+#btnRecord, #btnStop, #btnDelete {
+    font-size: 1.5em;
+    font-family: monospace;
+    cursor: pointer;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+#btnRecord:hover, #btnStop:hover, #btnDelete:hover {
+    background: darkgrey;
+    border: 1px solid white;
+}
+#btnRecord:focus, #btnStop:focus {
+    outline: none;
+    background: crimson;
+}
+#btnDelete, #btnDelete:focus {
+        color: red;
+        outline: none;
+}
+#btnDelete:hover {
+        color: white;
+}
+/* 02  Media Queries
+/***********************
+/* 02.1  Mittlere Bildschirme */
+@media screen and (max-width: 750px) {
+  body {
+    background-image: url("images/cat_middle.jpg");
+  }
+  h1 {
+    font-size: 350%;
+    margin-bottom: 0.5em;
+  }
+  .keydiv {
+    width: 6.5em;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 5px;
+  }
+    #btnRecord, #btnStop, #btnDelete {
+        font-size: 1.2em;
+        margin-top: 0.5em;
+    }
+    #recordDiv {
+     margin-top: 0.5em;   
+    }
+}
+/***********************
+/* 02.2  Kleine Bildschirme */
+@media screen and (max-width: 440px) {
+  body {
+    background-image: url("images/cat_small2.jpg");
+  }
+  h1 {
+    font-size: 350%;
+  }
+  .keydiv {
+    width: 6.5em;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 5px;
+  }
+    #btnRecord, #btnStop, #btnDelete {
+        font-size: 1em;
+        margin-top: 0.5em;
+    }
+    #recordDiv {
+        margin-top: 1em;
+    }
+}
